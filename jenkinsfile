@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                 cd myapp
                 python3 main.py
-                python3 main.py --name=rodrigo
+                python3 main.py --name="Rodrigo Pina"
                 '''
             }
         }
