@@ -14,6 +14,9 @@ pipeline {
                 echo "Building.."
                 sh '''
                 cd myapp-rust
+                ls
+                source $HOME/.cargo/env
+                export PATH=$HOME/.cargo/bin:$PATH
                 cargo build
                 '''
             }
