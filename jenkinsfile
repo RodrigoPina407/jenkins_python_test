@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'
+            label 'qa'
             }
       }
     triggers {
@@ -13,8 +13,8 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                cd myapp-rust
+                cargo build --release
                 '''
             }
         }
@@ -22,9 +22,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 main.py
-                python3 main.py --name="Rodrigo Pina"
+                cd myapp-rust
+                cargo test
                 '''
             }
         }
@@ -32,7 +31,7 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
-                echo "doing delivery stuff.."
+                cargo run --release
                 '''
             }
         }
