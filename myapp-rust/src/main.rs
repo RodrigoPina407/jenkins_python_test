@@ -11,7 +11,8 @@ fn bigger_than_one(x: u64) -> bool {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let x = bigger_than_one(96);
+    println!("Hello, world! {x}");
 }
 
 

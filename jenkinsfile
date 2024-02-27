@@ -1,32 +1,33 @@
 pipeline {
-    agent { 
+    agent {
         node {
             label 'slave-node1'
-            }
-      }
+        }
+    }
     triggers {
         pollSCM '*/2 * * * *'
-        
+    }
+
+    environment {
+        PATH = "$HOME/.cargo/bin:$PATH"
     }
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
+                echo 'Building..'
                 sh '''
                 cd myapp-rust
                 ls
                 echo $PATH
-                export PATH=$HOME/.cargo/bin:$PATH
                 cargo build
                 '''
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo 'Testing..'
                 sh '''
                 cd myapp-rust
-                export PATH=$HOME/.cargo/bin:$PATH
                 cargo test
                 '''
             }
@@ -36,7 +37,6 @@ pipeline {
                 echo 'Deliver....'
                 sh '''
                 cd myapp-rust
-                export PATH=$HOME/.cargo/bin:$PATH
                 cargo run
                 '''
             }
