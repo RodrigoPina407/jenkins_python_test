@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp-rust
+                cd myapp
                 cargo build --release
                 '''
             }

@@ -28,6 +28,6 @@ mod tests {
     #[test]
     fn it_doesnt_works() {
 
-        assert_eq!(true, bigger_than_one(0));
+        assert_eq!(false, bigger_than_one(0));
     }
 }
