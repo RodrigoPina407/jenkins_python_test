@@ -15,7 +15,7 @@ pipeline {
                 sh '''
                 cd myapp-rust
                 ls
-                echo $WORKSPACE
+                echo $PATH
                 export PATH=$HOME/.cargo/bin:$PATH
                 cargo build
                 '''
@@ -35,6 +35,7 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
+                cd myapp-rust
                 export PATH=$HOME/.cargo/bin:$PATH
                 cargo run
                 '''
