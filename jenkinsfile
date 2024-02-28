@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'cloud'
+            label 'slave-node1'
         }
     }
     triggers {
